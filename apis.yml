@@ -90,6 +90,8 @@ apis:
       - type: Documentation
         url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/pcs_overview.htm
 common:
+  - type: DomainSecurity
+    url: security/sparx-enterprise-architect-domain-security.yml
   - type: Documentation
     url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/
   - type: GettingStarted
