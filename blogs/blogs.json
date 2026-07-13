@@ -2,11 +2,10 @@
   "repo": "sparx-enterprise-architect",
   "feeds": [
     {
-      "source": "https://sparxsystems.com/resources/blog/",
-      "saved": 0,
-      "error": "403 Forbidden"
+      "source": "https://sparxsystems.com/products/ea/release_notes.html",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-06-27T13:11:46Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 0
 }
