@@ -1,0 +1,94 @@
+generated: '2026-08-29'
+method: probed
+source: live GET probes, 2026-08-29
+description: >-
+  No /.well-known/ discovery surface is served on any Sparx Systems host. Every canonical path
+  returned 404 with the site's normal 404 page. Recorded as an absence; no WellKnown or SecurityTxt
+  pointer is emitted.
+hit_count: 0
+hosts:
+  - host: https://sparxsystems.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+    soft_404_control:
+      path: /.well-known/definitely-not-a-real-path-xyz123
+      status: 404
+      bytes: 74962
+      note: >-
+        The control path returns the same 404 status and the same 74962-byte body as every probed
+        path, confirming the host is not a 200 catch-all — these are genuine negatives.
+  - host: https://www.sparxsystems.us
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+    note: >-
+      Sparx Systems North America regional site. All 404. It does, however, serve /llms.txt (200) —
+      captured under llms/.
+notes:
+  - >-
+    The Pro Cloud Server, which is the only Sparx HTTP API surface, is customer-installed software.
+    Any /.well-known/ document would be served by the customer's own deployment, not by a Sparx
+    host, so there is no vendor-controlled origin on which to publish one.
+contract_discovery:
+  date: '2026-08-29'
+  verdict: no published machine-readable contract on any vendor host
+  detail: >-
+    STEP 0b was run in full against every reachable Sparx host. No OpenAPI, Swagger, GraphQL or
+    AsyncAPI document exists on a vendor origin. This is not a discovery failure — Enterprise
+    Architect's HTTP API (Pro Cloud Server OSLC) is served by software the customer installs, so its
+    only machine-readable discovery document, the OSLC Service Provider Resource at
+    /{model_name}/oslc/am/sp/, lives on the customer's own host and cannot be probed from here.
+  probes:
+    - host: https://sparxsystems.com
+      paths: ['/openapi.json', '/swagger.json', '/sitemap.xml']
+      status: 403
+      note: Cloudflare managed challenge on this host; result inconclusive by extension, superseded by the reachable-host probes below.
+    - host: https://www.sparxsystems.us
+      paths: ['/openapi.json', '/openapi.yaml', '/swagger.json', '/v1/openapi.json', '/api-docs', '/redoc', '/graphql']
+      status: 404
+    - host: https://sparxsystems.eu
+      paths: ['/openapi.json', '/openapi.yaml', '/swagger.json', '/v1/openapi.json', '/api-docs', '/redoc', '/graphql']
+      status: 404
+    - host: https://www.sparxsystems.jp
+      paths: ['/openapi.json', '/openapi.yaml', '/swagger.json', '/v1/openapi.json', '/api-docs', '/redoc', '/graphql']
+      status: 404
+  mcp_tools_list:
+    attempted: false
+    reason: >-
+      The first-party MCP server is STDIO-only by the provider's explicit design decision — they
+      state an HTTP MCP server could violate the Enterprise Architect EULA. There is no endpoint to
+      POST tools/list to. The published tool list (38 tools, names and semantics) was captured from
+      the provider's own page; inputSchema capture would require installing the add-in on a licensed
+      Windows Enterprise Architect host.
+  graphql:
+    found: false
+  a2a_agent_card:
+    found: false
+    probed: ['https://sparxsystems.com/.well-known/agent-card.json', 'https://sparxsystems.com/.well-known/agent.json', 'https://www.sparxsystems.us/.well-known/agent-card.json', 'https://www.sparxsystems.us/.well-known/agent.json']
+    status: 404
+    note: No a2a/ artifact written, per the search-only rule.

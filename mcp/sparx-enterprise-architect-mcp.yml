@@ -1,0 +1,250 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.sparxsystems.jp/en/MCP/
+status: published
+name: MCP Server for Enterprise Architect
+description: >-
+  Official Model Context Protocol server for Sparx Systems Enterprise Architect. Published by
+  Sparx Systems Japan Co., Ltd. and announced on the official Sparx Systems community forum
+  (topic 49025, 29 May 2025). Ships as a Windows MSI that installs two components into the
+  Enterprise Architect program directory: MCP3.exe (the STDIO MCP server executable) and
+  MCP_EA.dll (a standard Enterprise Architect add-in that runs inside the EA process and talks
+  to the live repository over the COM Automation Interface).
+publisher:
+  name: Sparx Systems Japan Co., Ltd.
+  site: https://www.sparxsystems.jp/en/
+  note: >-
+    Regional Sparx Systems entity. The release was announced by Sparx Systems Japan on the
+    official sparxsystems.com support forum, and the installers are also mirrored under
+    www.sparxsystems.com/en/MCP/bin/. Recorded here as first-party.
+deployment:
+  mode: local-stdio
+  install: 'Windows MSI: MCP_EA_x64.msi (64-bit EA) or MCP_EA_x86.msi (32-bit EA and EA <= 15.2)'
+  package: https://www.sparxsystems.jp/en/MCP/bin/MCP_EA_x64.msi
+  auth: none
+  verified: searched
+  note: >-
+    STDIO only, and deliberately so. The provider states: "There is no plan to offer an
+    HTTP-based MCP server for Enterprise Architect, as doing so could violate the Enterprise
+    Architect EULA." There is no remote endpoint for an agent to POST to; a human must install
+    Enterprise Architect and this add-in on a Windows machine first.
+version: 2.8.11
+released: '2026-08-13'
+release_notes: https://www.sparxsystems.jp/en/MCP/releases.htm
+license:
+  cost: free
+  commercial_use: permitted
+  eula: https://www.sparxsystems.jp/en/MCP/eula.htm
+requirements:
+  os: Windows 10 / Windows 11 only (Linux and macOS not supported)
+  runtime: Microsoft .NET Desktop Runtime 9.0.x
+  host_application: >-
+    Enterprise Architect, any edition, any version EXCEPT 17.2 (documented incompatibility with
+    17.2 as of version 2.8.11)
+  client: MCP client supporting the STDIO transport
+tested_clients:
+  - Claude for Windows
+  - Visual Studio Code (GitHub Copilot Chat)
+  - Antigravity CLI
+reported_working_untested:
+  - Codex
+  - OpenCode
+client_config:
+  claude_desktop_config.json: |
+    {
+      "globalShortcut": "",
+      "mcpServers": {
+        "Enterprise Architect": {
+          "command": "C:\\Program Files\\Sparx Systems\\EA\\MCP_Server\\MCP3.exe",
+          "args": [""]
+        }
+      }
+    }
+launch_arguments:
+  - flag: -enableEdit
+    description: Enables the creation and modification tools. Disabled by default.
+  - flag: -enableDelete
+    description: >-
+      Enables the deletion tools. Disabled by default. The provider warns that during their own
+      testing an instruction to delete tagged values on a package resulted in the entire package
+      being deleted, and recommends backing up the project first.
+  - flag: -setTimeout N
+    description: >-
+      Communication timeout with Enterprise Architect, 3-600 seconds. Default 3 seconds. Raise it
+      for slower paths such as a Pro Cloud Server repository.
+  - flag: -modifiedInfoPath <fullPathToCSVFile>
+    description: >-
+      Appends a CSV audit trail of every item the AI added, edited or deleted, so AI-authored
+      model changes can later be distinguished from human ones.
+prompts:
+  supported: true
+  note: >-
+    The server exposes MCP prompts carrying element-type creation rules, because the `type` string
+    passed to the creation tools must match the Automation Interface type name exactly.
+  published:
+    - Creation Rules for UML
+    - Creation Rules for SysML 1.5
+    - Creation Rules for BPMN 2.0
+tools:
+  # Verbatim tool names as published on https://www.sparxsystems.jp/en/MCP/ (2026-08-29).
+  # Input schemas are not published on the page and this server is STDIO-only, so a live
+  # tools/list introspection is not reachable over the network; schemas would require
+  # installing the add-in on Windows. Names and semantics only, no invented parameters.
+  - name: get_current_diagram
+    category: diagrams
+    access: read
+  - name: get_diagrams_information
+    category: diagrams
+    access: read
+  - name: get_opened_diagrams
+    category: diagrams
+    access: read
+  - name: open_diagrams
+    category: diagrams
+    access: read
+    description: Opens a diagram in the running Enterprise Architect instance.
+  - name: get_diagram_image
+    category: diagrams
+    access: read
+  - name: reload_diagrams
+    category: diagrams
+    access: read
+  - name: get_current_elements
+    category: elements
+    access: read
+  - name: get_elements_information
+    category: elements
+    access: read
+  - name: select_element_in_browser
+    category: elements
+    access: read
+  - name: select_element_in_diagram
+    category: elements
+    access: read
+  - name: find_element_in_diagrams
+    category: elements
+    access: read
+    description: Finds all diagrams in which the target element is used.
+  - name: find_elements_by_name
+    category: elements
+    access: read
+    description: Exact match or contains match on element names.
+  - name: export_element_linked_documents
+    category: elements
+    access: read
+  - name: get_current_connector
+    category: connectors
+    access: read
+  - name: get_connectors_information
+    category: connectors
+    access: read
+  - name: get_current_package
+    category: packages
+    access: read
+  - name: get_packages_information
+    category: packages
+    access: read
+  - name: get_root_packages
+    category: packages
+    access: read
+  - name: find_packages_by_name
+    category: packages
+    access: read
+  - name: create_or_update_diagram
+    category: diagrams
+    access: write
+    requires_flag: -enableEdit
+  - name: place_elements_on_diagram
+    category: diagrams
+    access: write
+    requires_flag: -enableEdit
+  - name: remove_elements_from_diagram
+    category: diagrams
+    access: write
+    requires_flag: -enableEdit
+  - name: layout_connectors
+    category: diagrams
+    access: write
+    requires_flag: -enableEdit
+  - name: change_connector_visibility
+    category: diagrams
+    access: write
+    requires_flag: -enableEdit
+  - name: create_or_update_elements
+    category: elements
+    access: write
+    requires_flag: -enableEdit
+  - name: create_or_update_operations
+    category: elements
+    access: write
+    requires_flag: -enableEdit
+  - name: create_or_update_attributes
+    category: elements
+    access: write
+    requires_flag: -enableEdit
+  - name: clone_elements
+    category: elements
+    access: write
+    requires_flag: -enableEdit
+  - name: import_element_linked_documents
+    category: elements
+    access: write
+    requires_flag: -enableEdit
+  - name: create_or_update_connectors
+    category: connectors
+    access: write
+    requires_flag: -enableEdit
+  - name: create_or_update_messages
+    category: connectors
+    access: write
+    requires_flag: -enableEdit
+  - name: create_or_update_package
+    category: packages
+    access: write
+    requires_flag: -enableEdit
+  - name: clone_package
+    category: packages
+    access: write
+    requires_flag: -enableEdit
+  - name: create_baseline
+    category: packages
+    access: write
+    requires_flag: -enableEdit
+    description: Captures a package baseline — the reversal anchor for AI-authored model edits.
+  - name: apply_baseline
+    category: packages
+    access: write
+    requires_flag: -enableEdit
+    description: Restores a package from a previously captured baseline.
+  - name: delete_from_model
+    category: model
+    access: delete
+    requires_flag: -enableDelete
+  - name: delete_taggedvalue_from_model
+    category: model
+    access: delete
+    requires_flag: -enableDelete
+coverage:
+  tools_total: 38
+  read_tools: 19
+  write_tools: 17
+  delete_tools: 2
+  schemas_captured: false
+  schemas_note: >-
+    inputSchema for each tool is not published and cannot be introspected remotely — the server is
+    STDIO-only and requires a licensed Windows Enterprise Architect install. Capturing schemas
+    needs an authenticated local introspection run, not a network probe.
+data_handling:
+  note: >-
+    The provider states the MCP server does not itself transmit model information externally, and
+    that Sparx Systems Japan does not access model or personal data; the MCP client's LLM may send
+    model content to external servers. MCP_EA.log contains no model or personal data, but MCP
+    client logs (e.g. Claude's mcp-server-Enterprise Architect.log) record full request/response
+    payloads and may contain confidential model content.
+related_ai_surfaces:
+  - name: Enterprise Architect built-in AI Chat
+    availability: Corporate edition and above
+    url: https://sparxsystems.com/resources/webinar/release/17.1/artificial-intelligence/
+  - name: Kernaro
+    positioning: Premium browser-based enterprise AI product
+    url: https://kernaro.sparxsystems.com/

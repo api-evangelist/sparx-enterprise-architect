@@ -1,0 +1,94 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://www.sparxsystems.jp/help/17.0/creation_factory.html,
+  https://www.sparxsystems.jp/help/17.0/oslc_am_top.html,
+  https://www.sparxsystems.jp/help/17.0/oslc_user_cred.html,
+  https://www.sparxsystems.jp/help/17.0/oslc_access_code.html
+format: oslc-rdf-error
+coverage:
+  registry_published: false
+  note: >-
+    Sparx Systems publishes no error-code registry for the OSLC RESTful API. The provider asserts
+    conformance to the OSLC Architecture Management 2.0 "Error Responses" base requirement, and the
+    documentation describes specific failure conditions in prose, but there is no enumerated list
+    of codes, titles or remediations. The entries below are the failure conditions the docs state
+    explicitly — nothing has been inferred or invented, and this is a partial catalog by
+    construction. An integrator should expect undocumented failures.
+envelope:
+  media_type: application/rdf+xml
+  note: >-
+    Errors are returned as RDF/XML per the OSLC Error Responses requirement. No
+    application/problem+json (RFC 9457) envelope is used, and no vendor error-code field is
+    documented.
+problems:
+  - id: missing-user-authentication-token
+    title: Request rejected — no user authentication token
+    detail: >-
+      Pro Cloud Server does not process any OSLC request unless a user authentication token is
+      supplied. The token is obtained by POSTing to /{model_name}/oslc/am/login/ and returned as
+      the ss:useridentifier element.
+    remediation: Authenticate at the login endpoint and pass the returned token as useridentifier.
+    source: https://www.sparxsystems.jp/help/17.0/oslc_user_cred.html
+  - id: invalid-access-code
+    title: Request rejected — invalid or missing EAO-Access-Code
+    detail: >-
+      When an OSLC access code is configured on the project, Pro Cloud Server validates the custom
+      HTTP header EAO-Access-Code before processing the request.
+    remediation: Send the project's configured access code in the EAO-Access-Code header on every OSLC request.
+    source: https://www.sparxsystems.jp/help/17.0/oslc_access_code.html
+  - id: creation-factory-missing-required-property
+    title: Creation Factory rejected — required property absent
+    detail: >-
+      The OSLC properties title and packageID are mandatory in the RDF payload POSTed to
+      /{model_name}/oslc/cf/. A payload missing either is rejected.
+    remediation: Include dcterms:title and ss:packageID in the RDF body.
+    source: https://www.sparxsystems.jp/help/17.0/creation_factory.html
+  - id: creation-factory-unknown-package-id
+    title: Creation Factory rejected — packageID does not exist in the model
+    detail: The package named by ss:packageID must already exist in the target model.
+    remediation: >-
+      Run a Query Capability request against /{model_name}/oslc/qc/ first to resolve a valid
+      packageID before attempting creation.
+    source: https://www.sparxsystems.jp/help/17.0/creation_factory.html
+  - id: creation-factory-empty-property-value
+    title: Creation Factory rejected — empty value for a constrained property
+    detail: >-
+      An empty element for a constrained property is an error rather than a no-op. The documented
+      example is an empty ss:difficulty on a requirement.
+    remediation: Omit the property entirely rather than sending it with an empty value.
+    source: https://www.sparxsystems.jp/help/17.0/creation_factory.html
+  - id: read-only-property-write
+    title: Write rejected — read-only OSLC property
+    detail: 'The OSLC properties identifier, created and modified are reference-only and cannot be set or changed.'
+    remediation: Remove read-only properties from the request payload.
+    source: https://www.sparxsystems.jp/help/17.0/creation_factory.html
+  - id: read-only-model
+    title: Write rejected — model is read-only or permission denied
+    detail: >-
+      The login response advertises ss:readonlymodel, ss:elementpermission and ss:diagrampermission.
+      A write attempted against a read-only model, or without the corresponding permission, will not
+      succeed.
+    remediation: Inspect the login response before attempting writes and route the request to a user with the permission.
+    source: https://www.sparxsystems.jp/help/17.0/oslc_user_cred.html
+  - id: unlicensed-pro-cloud-server
+    title: OSLC unavailable — no paid Pro Cloud Server licence
+    detail: >-
+      OSLC functionality requires a Pro Cloud Server with a paid licence applied. The login response
+      carries ss:validlicense so a client can detect this before issuing OSLC calls.
+    remediation: Apply a licensed Pro Cloud Server edition, or fall back to the COM Automation Interface locally.
+    source: https://www.sparxsystems.jp/help/17.0/oslc_am_top.html
+mcp_errors:
+  - id: tool-unsupported-on-ea-17.2
+    title: MCP tool returns an error on Enterprise Architect 17.2
+    detail: >-
+      The MCP server add-in is documented as incompatible with Enterprise Architect 17.2. Version
+      2.8.9 of the server added an explicit error return for tools that are not supported there.
+    source: https://www.sparxsystems.jp/en/MCP/releases.htm
+  - id: ea-communication-timeout
+    title: MCP tool call timed out talking to Enterprise Architect
+    detail: >-
+      Default timeout is 3 seconds; if Enterprise Architect is not running, or the call does not
+      complete in time, the tool times out. Configurable from 3 to 600 seconds.
+    remediation: 'Launch MCP3.exe with -setTimeout N; raise it when the repository is behind a Pro Cloud Server.'
+    source: https://www.sparxsystems.jp/en/MCP/

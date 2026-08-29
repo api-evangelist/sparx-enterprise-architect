@@ -1,0 +1,101 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.sparxsystems.jp/en/MCP/releases.htm
+description: >-
+  Sparx Systems publishes two separate dated change streams that matter to an integrator: the
+  Enterprise Architect product release/build history (per-version history.html pages on
+  sparxsystems.com) and the release notes for the MCP Server add-in. The MCP server notes below
+  were fetched verbatim; the product release train is recorded with lower confidence because
+  sparxsystems.com serves a Cloudflare managed challenge to non-browser clients (HTTP 403), so
+  its history pages could not be fetched directly during this pass.
+streams:
+  - id: enterprise-architect-product
+    name: Enterprise Architect release history
+    scheme: major.minor + build number (e.g. 17.2 build 1721)
+    url_pattern: https://sparxsystems.com/products/ea/<version>/history.html
+    current_version: '17.2'
+    current_build: '1721'
+    current_release_date: '2026-07-28'
+    confidence: medium
+    evidence:
+      - url: https://sparxsystems.com/products/ea/17.2/history.html
+        status: 403
+        note: Cloudflare managed challenge to our crawler; page is indexed and demonstrably exists.
+      - url: https://sparxsystems.com/products/ea/17.2/
+        status: 403
+        note: Version/build/date read from the search index of the provider's own release page.
+    recent_versions:
+      - version: '17.2'
+        url: https://sparxsystems.com/products/ea/17.2/history.html
+      - version: '17.1'
+        url: https://sparxsystems.com/products/ea/17.1/history.html
+      - version: '17.0'
+        url: https://sparxsystems.com/products/ea/17.0/history.html
+  - id: mcp-server
+    name: MCP Server for Enterprise Architect release notes
+    scheme: semver
+    url: https://www.sparxsystems.jp/en/MCP/releases.htm
+    current_version: 2.8.11
+    current_release_date: '2026-08-13'
+    confidence: high
+    cadence_observed: >-
+      Seven releases between 8 July and 13 August 2026 — roughly weekly, all patch-level.
+    entries:
+      - version: 2.8.11
+        date: '2026-08-13'
+        breaking: false
+        highlights:
+          - Added the EULA to the installation process.
+          - Allowed the layout_connectors tool for Activity diagrams (experimental).
+          - Attribute and operation ordering now updated on insert/move.
+          - Fixed sequence-message creation failing in some cases.
+          - Fixed meaningless diagram creation/modification dates being returned.
+      - version: 2.8.10
+        date: '2026-08-07'
+        breaking: false
+        highlights:
+          - Sequence messages reordered after add/delete to ensure correct ordering.
+          - Fixed Fork/Join and Merge creation.
+          - Fixed connector colour reset when only width was specified.
+          - Handled empty Package creation date on MySQL repositories.
+      - version: 2.8.9
+        date: '2026-07-31'
+        breaking: false
+        highlights:
+          - Added SysML Value property information to the prompts.
+          - Returns an explicit error for tools not supported on Enterprise Architect 17.2.
+          - Fixed connector routeStyle not being applied.
+      - version: 2.8.8
+        date: '2026-07-23'
+        breaking: false
+        highlights:
+          - Support for appending new attributes and operations at the end.
+          - Removed the order field for new sequence messages to avoid a misleading value.
+          - Fixed operation parameters not visible before a diagram reload.
+      - version: 2.8.7
+        date: '2026-07-21'
+        breaking: false
+        highlights:
+          - Reduced the size of the JSON returned by the server to cut LLM token cost and latency.
+          - Accepts the 'SysML1.5::' stereotype prefix and converts it to 'SysML1.4::'.
+          - Fixed element type returning the UML base name for profiled elements.
+      - version: 2.8.6
+        date: '2026-07-17'
+        breaking: false
+        highlights:
+          - Primitive types (Boolean, Integer, ...) supported for Ports, Parts and similar.
+          - Element multiplicity supported.
+          - Custom properties updatable, aligned with tagged values.
+          - position and size may be omitted in place_elements_on_diagram to retain current values.
+      - version: 2.8.5
+        date: '2026-07-13'
+        breaking: false
+        highlights:
+          - Recommended element sizes added to the UML and SysML prompts.
+          - CallBehaviorAction / CallOperationAction creatable without related elements.
+          - Sequence-message payload now carries connectorID, needed to delete a message.
+      - version: 2.8.4
+        date: '2026-07-08'
+        breaking: false
+        highlights:
+          - Support for Sequence diagrams extended by an MDG profile.

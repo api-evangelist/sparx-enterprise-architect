@@ -1,0 +1,48 @@
+The XML sitemap of this website can by found by following [this link](https://sparxsystems.us/sitemap_index.xml).
+
+# Sparx Systems North America
+> North America's hub for purchasing, deployment, support, consulting, and training services for Sparx Systems products.
+
+## Products & Platform
+- [Sparx Systems Architecture Platform](https://www.sparxsystems.us): Overview of the platform comprising Enterprise Architect, Prolaborate, and Pro Cloud Server.
+- [Enterprise Architect Software](https://www.sparxsystems.us/enterprise-architect): Overview of the Enterprise Architect (EA) modeling platform.
+- [Enterprise Architect Features](https://www.sparxsystems.us/enterprise-architect/ea-features): Capabilities across modeling, collaboration, and governance.
+- [Enterprise Architect 17 Features](https://www.sparxsystems.us/enterprise-architect/whats-new-in-sparx-ea-17): New and updated features in EA 17.
+- [Enterprise Architect Editions](https://www.sparxsystems.us/enterprise-architect/sparx-ea-editions): Edition overview by role and collaboration needs.
+- [Enterprise Architect Editions Comparison](https://www.sparxsystems.us/feature-matrix-overview/ea-compare-editions): Side-by-side comparison of EA editions.
+- [Prolaborate](https://www.sparxsystems.us/prolaborate): Web collaboration and publishing for Enterprise Architect models.
+- [Prolaborate Editions Comparison](https://www.sparxsystems.us/feature-matrix-overview/prolaborate-compare-editions): Compare Prolaborate editions by team size and features.
+- [Pro Cloud Server Overview](https://www.sparxsystems.us/pro-cloud-server): Secure remote model access and integrations for EA.
+- [Pro Cloud Server Comparison](https://www.sparxsystems.us/feature-matrix-overview/sparx-pcs-compare-editions): Edition differences and licensing for Pro Cloud Server.
+- [EA SaaS](https://www.sparxsystems.us/ea-saas): Managed cloud deployment for Enterprise Architect and Prolaborate.
+- [Sparx Cloud Architecture](https://www.sparxsystems.us/sparx-cloud-architecture-platform): Hosted repositories, deployment, migration, and integration.
+
+## License Pricing
+- [Enterprise Architect Pricing](https://www.sparxsystems.us/sparx-license-pricing/enterprise-architect/): Compare EA editions and licensing options with purchase guidance.
+- [Prolaborate and Pro Cloud Server Pricing](https://www.sparxsystems.us/sparx-license-pricing/prolaborate-pro-cloud-server/): Side-by-side pricing and edition details for Prolaborate and Pro Cloud Server.
+- [Sparx Systems License Renewal](https://www.sparxsystems.us/sparx-systems-license-renewal/): How to renew EA, Prolaborate, and Pro Cloud Server licenses and what’s covered.
+- [Reseller Offers](https://www.sparxsystems.us/reseller-offers): Partner promotions.
+
+## Solutions
+- [Enterprise Architecture Management](https://www.sparxsystems.us/solutions/enterprise-architecture-management): Operating model, roadmaps, and governance.
+- [Application Portfolio Management](https://www.sparxsystems.us/solutions/application-portfolio-management-accelerator): Pre-configured APM accelerator.
+- [Business Capability Management](https://www.sparxsystems.us/solutions/business-capability-management-accelerator): Capability maps, planning, and dashboards.
+- [Model-Based Systems Engineering](https://www.sparxsystems.us/solutions/model-based-systems-engineering): MBSE with SysML and standards.
+- [Business Process Modeling](https://www.sparxsystems.us/solutions/business-process-modeling): BPMN workflows and analysis.
+- [Requirements Management](https://www.sparxsystems.us/solutions/requirements-management): Traceability and change control.
+- [Database Engineering](https://www.sparxsystems.us/solutions/database-engineering): Data modeling and engineering.
+- [Software Architecture](https://www.sparxsystems.us/solutions/software-architecture): Design, review, and collaboration.
+- [Innovation Management](https://www.sparxsystems.us/solutions/innovation-management): Portfolio ideation through delivery.
+- [TPM Starter Kit](https://www.sparxsystems.us/solutions/tpm-starter-kit): Technology portfolio foundations.
+- [Sparx Systems Solutions](https://www.sparxsystems.us/solutions): Solutions hub across domains.
+
+## Services
+- [Deployment Services](https://www.sparxsystems.us/services/deployment-services/): Installation, migration, and deployment assistance.
+- [Premium Platform Support](https://www.sparxsystems.us/services/premium-platform-support/): SLA-backed, prioritized technical and functional support.
+- [Professional Consulting Services](https://www.sparxsystems.us/services/consulting-services/): Consulting to start and scale architecture initiatives.
+
+## Proof & Actions
+- [Enterprise Architect Free Trial](https://www.sparxsystems.us/enterprise-architect/download-free-trial): 30-day full-feature trial.
+- [Case Studies](https://www.sparxsystems.us/case-study): Customer case studies and outcomes.
+- [Book a Demo](https://www.sparxsystems.us/book-a-demo): Request a customized product or platform demo.
+- [Contact Us](https://www.sparxsystems.us/contact-us/): Licensing, purchasing, and general inquiries.

@@ -4,151 +4,132 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Sparx Enterprise Architect
 providerId: sparx-enterprise-architect
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-29'
+generated: '2026-08-29'
+method: searched
+source: https://www.sparxsystems.us/sparx-license-pricing/enterprise-architect/
+source_note: >-
+  Prices read from the Sparx Systems North America licence-and-pricing page on 2026-08-29. The
+  vendor's own global shop (https://sparxsystems.com/products/ea/shop/) serves a Cloudflare managed
+  challenge (HTTP 403) to non-browser clients and could not be read directly, so the regional
+  Sparx Systems site is the source of record for this pass. Prices are US dollars and may differ by
+  region.
 tags:
   - Enterprise Architecture
   - Modeling
   - Software Engineering
   - Systems Engineering
   - UML
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: >-
+  Enterprise Architect is sold as a per-user licence with a 12-month subscription for updates and
+  support, not as a metered API. There is no API request quota, no overage rate and no
+  usage-priced tier anywhere in the product line: the programmatic surfaces (COM Automation
+  Interface, Add-In Framework, scripting, and the MCP server) are included with the desktop licence,
+  and the OSLC RESTful API is gated on a separately purchased Pro Cloud Server licence rather than
+  on call volume. This replaces a 2026-05-04 scaffold that invented free/professional/enterprise
+  tiers with fabricated request quotas and rate limits; none of those existed.
+plan_count: 5
+billing:
+  model: perpetual licence + 12-month subscription
+  currency: USD
+  subscription_includes:
+    - Direct support from Sparx Systems support
+    - Access to the latest major and minor Enterprise Architect versions
+    - MSI packages for deployment
+    - Access to older Enterprise Architect versions
+    - Priority issue and bug handling
+    - DBMS scripts and patches (MS SQL, MySQL, Oracle, PostgreSQL, MSDE, Adaptive Server Anywhere)
+    - Security key enabling user/model security features
+  renewal: >-
+    Renewal is required each year to keep receiving updates. A lapsed licence can be reinstated
+    within 2 years at the renewal rate; without renewal the customer loses access to the
+    downloadable installer.
+  upgrade: >-
+    An edition upgrade (e.g. Corporate to Unified) costs the price difference plus a processing fee
+    and does not extend the licence validity period.
 plans:
-  - id: sparx-enterprise-architect-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Sparx Enterprise Architect API surface. Intended for evaluation,
-      prototyping, and low-volume integrations. Real limits and pricing must be reconciled with the provider's
-      published plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Enterprise Architect Automation Interface
-      - name: Enterprise Architect Add-In Framework
-      - name: Enterprise Architect Scripting
-      - name: Pro Cloud Server API
-  - id: sparx-enterprise-architect-pro
-    name: Professional
+  - id: sparx-ea-trial
+    name: Free Trial
+    type: trial
+    price: '0.00'
+    currency: USD
+    period: 30 days
+    description: 30-day full-feature trial of Enterprise Architect.
+    url: https://www.sparxsystems.us/enterprise-architect/download-free-trial
+    api_access:
+      - COM Automation Interface
+      - Add-In Framework
+      - Scripting engine
+      - MCP Server add-in (free, separate download)
+  - id: sparx-ea-professional
+    name: Professional Edition
     type: paid
-    description: Production tier for Sparx Enterprise Architect. Provides higher quotas, priority support,
-      and access to the broader API portfolio. Pricing placeholder; align with the provider's pricing
-      page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Enterprise Architect Automation Interface
-      - name: Enterprise Architect Add-In Framework
-      - name: Enterprise Architect Scripting
-      - name: Pro Cloud Server API
-  - id: sparx-enterprise-architect-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Sparx Enterprise Architect. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Enterprise Architect Automation Interface
-      - name: Enterprise Architect Add-In Framework
-      - name: Enterprise Architect Scripting
-      - name: Pro Cloud Server API
+    price: null
+    price_note: >-
+      The standard licence price for Professional is not published on the regional pricing page —
+      only the three higher editions carry a price card there. The Professional renewal rate IS
+      published: US$81.00 standard, US$106.00 floating. Recorded as null rather than guessed.
+    floating_price: null
+    renewal_price: '81.00'
+    renewal_price_floating: '106.00'
+    currency: USD
+    period: perpetual licence with 12-month subscription
+    unit: per user
+  - id: sparx-ea-corporate
+    name: Corporate Edition
+    type: paid
+    price: '320.00'
+    floating_price: '425.00'
+    renewal_price: '106.00'
+    renewal_price_floating: '141.00'
+    currency: USD
+    period: perpetual licence with 12-month subscription
+    unit: per user
+    description: >-
+      Team-based modelling, version control and advanced documentation. First edition with the
+      built-in AI Chat feature.
+  - id: sparx-ea-unified
+    name: Unified Edition
+    type: paid
+    price: '535.00'
+    floating_price: '699.00'
+    renewal_price: '177.00'
+    renewal_price_floating: '230.00'
+    currency: USD
+    period: perpetual licence with 12-month subscription
+    unit: per user
+    description: Multi-domain modelling, decision automation and process simulation.
+  - id: sparx-ea-ultimate
+    name: Ultimate Edition
+    type: paid
+    price: '750.00'
+    floating_price: '965.00'
+    renewal_price: '247.00'
+    renewal_price_floating: '318.00'
+    currency: USD
+    period: perpetual licence with 12-month subscription
+    unit: per user
+    description: Enterprise, business, software and system architecture in one edition.
+related_products:
+  - name: Pro Cloud Server
+    pricing_url: https://www.sparxsystems.us/sparx-license-pricing/prolaborate-pro-cloud-server/
+    note: >-
+      Separately licensed and separately priced; sold by edition rather than by call volume. The
+      free unlicensed edition provides secure cloud repository connections and floating-licence
+      distribution but NOT the OSLC RESTful API, which requires a paid licence. Per-edition prices
+      are on the regional pricing page and were not captured in this pass.
+  - name: Prolaborate
+    pricing_url: https://www.sparxsystems.us/sparx-license-pricing/prolaborate-pro-cloud-server/
+  - name: EA SaaS
+    url: https://www.sparxsystems.us/ea-saas
+    note: Managed cloud deployment of Enterprise Architect and Prolaborate; priced on enquiry.
+  - name: MCP Server for Enterprise Architect
+    url: https://www.sparxsystems.jp/en/MCP/
+    price: '0.00'
+    note: Free, commercial use permitted. Requires a licensed Enterprise Architect install.
+  - name: Academic licences
+    url: https://www.sparxsystems.us/sparx-license-pricing/enterprise-architect/
+    note: Discounted student/educator pricing is offered; rates not published on the page read.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

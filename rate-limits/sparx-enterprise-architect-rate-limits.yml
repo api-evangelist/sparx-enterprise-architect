@@ -4,104 +4,51 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Sparx Enterprise Architect
 providerId: sparx-enterprise-architect
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-29'
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://www.sparxsystems.jp/help/17.0/oslc_am_top.html,
+  https://www.sparxsystems.jp/help/17.0/query_capability.html,
+  https://www.sparxsystems.jp/en/MCP/
 tags:
   - Enterprise Architecture
-  - Modeling
-  - Software Engineering
-  - Systems Engineering
-  - UML
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Sparx Enterprise Architect API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Enterprise Architect Automation Interface
-      - Enterprise Architect Add-In Framework
-      - Enterprise Architect Scripting
-      - Pro Cloud Server API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Enterprise Architect Automation Interface
-      - Enterprise Architect Add-In Framework
-      - Enterprise Architect Scripting
-      - Pro Cloud Server API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Enterprise Architect Automation Interface
-      - Enterprise Architect Add-In Framework
-      - Enterprise Architect Scripting
-      - Pro Cloud Server API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Enterprise Architect Automation Interface
-      - Enterprise Architect Add-In Framework
-      - Enterprise Architect Scripting
-      - Pro Cloud Server API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Enterprise Architect Automation Interface
-      - Enterprise Architect Add-In Framework
-      - Enterprise Architect Scripting
-      - Pro Cloud Server API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+description: >-
+  Sparx Systems publishes no rate limits, no quota, and no throttling response headers for any of
+  its programmatic surfaces, and structurally would not: the Pro Cloud Server OSLC API runs on the
+  customer's own infrastructure, and the COM Automation Interface, scripting engine and MCP server
+  are in-process on the user's own machine. Throughput is bounded by the customer's hardware and
+  database, not by a vendor policy. This replaces a 2026-05-04 scaffold that invented per-tier
+  request-per-minute limits, monthly quotas and X-RateLimit-* headers, none of which exist.
+limit_count: 0
+limits: []
+headers: {}
+responseCodes: {}
+evidence:
+  - url: https://www.sparxsystems.jp/help/17.0/oslc_am_top.html
+    status: 200
+    finding: OSLC Architecture Management 2.0 conformance list contains no throttling or quota requirement.
+  - url: https://www.sparxsystems.jp/help/17.0/query_capability.html
+    status: 200
+    finding: >-
+      Query Capability documents oslc.where, oslc.select, oslc.properties and oslc.prefix and no
+      paging, page-size or result-cap parameter — the closest thing to a load control on the API,
+      and it is absent.
+  - url: https://www.sparxsystems.jp/en/MCP/
+    status: 200
+    finding: >-
+      The only published runtime bound on the MCP server is a client-side timeout (-setTimeout,
+      3-600 seconds, default 3), which is a wait ceiling rather than a rate limit.
+observed_runtime_bounds:
+  - name: MCP server communication timeout
+    scope: client process
+    default_seconds: 3
+    configurable_range_seconds: [3, 600]
+    note: >-
+      Not a rate limit. Recorded here because it is the only published number an agent integrator
+      must tune, and it is the one the provider says to raise when the repository sits behind a Pro
+      Cloud Server.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

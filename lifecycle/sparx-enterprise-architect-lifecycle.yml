@@ -1,0 +1,58 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://www.sparxsystems.jp/en/MCP/releases.htm,
+  https://www.sparxsystems.us/sparx-license-pricing/enterprise-architect/,
+  https://www.sparxsystems.jp/help/17.0/oslc_am_top.html
+description: >-
+  Version, support and deprecation posture. Enterprise Architect is shipped software on a
+  perpetual-licence-plus-12-month-subscription model, not an operated service, which is why several
+  fields a hosted API would carry are legitimately absent here rather than missing.
+versioning:
+  scheme: product release train (major.minor + build)
+  current: '17.2'
+  current_build: '1721'
+  current_release_date: '2026-07-28'
+  api_version_in_url: false
+  note: >-
+    The OSLC path segment is fixed at /oslc/am/ and carries no version. The API contract version is
+    "OSLC Architecture Management v2.0" and the behaviour tracks the installed Pro Cloud Server
+    build (6.x; 17.2 is documented against Pro Cloud Server 6.5).
+  docs: https://sparxsystems.com/products/ea/17.2/history.html
+release_notes:
+  product: https://sparxsystems.com/products/ea/17.2/history.html
+  mcp_server: https://www.sparxsystems.jp/en/MCP/releases.htm
+  see: changelog/sparx-enterprise-architect-changelog.yml
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No deprecation policy, no Sunset/Deprecation header support, and no published notice period for
+    removing OSLC capabilities. The one deprecation-shaped signal found is a compatibility break in
+    the opposite direction: the MCP server add-in is documented as incompatible with Enterprise
+    Architect 17.2, and version 2.8.9 added an explicit error return for tools unsupported on 17.2.
+    No Deprecation pointer is emitted.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No uptime SLA is published, and none would apply: Pro Cloud Server runs on the customer's own
+    infrastructure. The provider's own FAQ states plainly that Pro Cloud Server "isn't a cloud
+    service". SLA-backed support is sold separately as Premium Platform Support through Sparx
+    Systems North America.
+status_page: null
+status_page_note: >-
+  No status page exists and none is expected for customer-installed software. The one hosted
+  offering, EA SaaS, is sold through the regional Sparx Cloud Architecture Platform and publishes
+  no separate status endpoint. No StatusPage pointer is emitted.
+support:
+  subscription: >-
+    A licence includes a 12-month subscription covering major and minor updates, MSI deployment
+    packages, access to older versions, priority bug handling, DBMS scripts and patches, and the
+    model-security key.
+  lapsed_licence: >-
+    A lapsed subscription can be reinstated within 2 years at the renewal rate. Without renewal the
+    customer loses access to the downloadable installer, and the provider advises keeping a local
+    copy of the installation file.
+  url: https://sparxsystems.com/support/
+deprecated_operations: []

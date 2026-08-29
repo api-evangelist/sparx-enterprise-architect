@@ -1,0 +1,112 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.sparxsystems.jp/help/17.0/oslc_user_cred.html
+docs: https://www.sparxsystems.jp/help/17.0/oslc_user_cred.html
+also_see:
+  - https://www.sparxsystems.jp/help/17.0/oslc_access_code.html
+  - https://www.sparxsystems.jp/help/17.0/oslc_serv_provid.html
+source_note: >-
+  The canonical English pages for these topics live at
+  sparxsystems.com/enterprise_architect_user_guide/17.x/the_model_repository/oslc_user_cred.html
+  and oslc_access_code.html, but sparxsystems.com serves a Cloudflare managed challenge (HTTP 403)
+  to non-browser clients. The identical topics were read from the Sparx Systems Japan help mirror
+  (www.sparxsystems.jp/help/17.0/), which is served by a Sparx Systems entity and carries the same
+  URLs, headers and RDF payloads verbatim.
+summary:
+  types: [http, custom-token, openIdConnect, ntlm]
+  api_key_in: [header]
+  oauth2_flows: [authorizationCode]
+  applies_to: Pro Cloud Server OSLC RESTful API (the only HTTP API surface)
+  note: >-
+    The COM Automation Interface, Add-In Framework and scripting engine are in-process surfaces
+    inside a licensed Enterprise Architect installation. They have no network authentication; the
+    security boundary is the Windows session plus, optionally, Enterprise Architect's own model
+    security (user ID / password) when the project has security enabled.
+schemes:
+  - name: OSLCUserAuthenticationToken
+    type: custom-token
+    in: query
+    parameter: useridentifier
+    description: >-
+      Every OSLC GET/POST is rejected by Pro Cloud Server unless a user authentication token is
+      supplied. The token is obtained by POSTing to the login endpoint and is returned inside the
+      RDF/XML response as the element ss:useridentifier.
+    obtain:
+      endpoint: '<protocol>://<server>/<model_name>/oslc/am/login/'
+      method: POST
+      response_media_type: application/rdf+xml
+      response_token_element: 'ss:useridentifier'
+      response_also_returns:
+        - 'ss:readonlymodel — whether the model permits resource creation/update'
+        - 'ss:validlicense — whether a valid Pro Cloud Server licence is present'
+        - 'ss:userfullname — foaf:Person with foaf:name and foaf:nick'
+        - 'ss:accesstoken — OpenID access token, OpenID-authenticated models only'
+        - 'ss:refreshtoken — OpenID refresh token, OpenID-authenticated models only'
+        - 'ss:elementpermission — permission to create/update resources'
+    revoke:
+      endpoint: '<protocol>://<server>/<model_name>/oslc/am/logout/?useridentifier=<token>'
+      method: GET
+  - name: EnterpriseArchitectModelSecurity
+    type: http
+    scheme: form-post-credentials
+    description: >-
+      For a project with Enterprise Architect model security enabled, the client POSTs the same
+      user ID and password used to open the secured project.
+    request:
+      endpoint: '<protocol>://<server>/<model_name>/oslc/am/login/'
+      method: POST
+      body: 'uid=<USER ID>;pwd=<PASSWORD>;'
+  - name: NoSecurityLogin
+    type: http
+    scheme: form-post-credentials
+    description: >-
+      For a project with model security disabled a token is still required, but it can be
+      requested with empty credentials.
+    request:
+      endpoint: '<protocol>://<server>/<model_name>/oslc/am/login/'
+      method: POST
+      body: 'uid=;pwd=;'
+  - name: NTLM
+    type: http
+    scheme: ntlm
+    description: Windows NTLM single sign-on against the Pro Cloud Server.
+    request:
+      endpoint: '<protocol>://<server>/<model_name>/oslc/am/login/'
+      method: POST
+      body: 'sso=ntlm;'
+  - name: OpenIDConnect
+    type: openIdConnect
+    description: >-
+      For OpenID-enabled projects the client first authenticates the user at the authorizationURI
+      endpoint named in the Service Provider Resource, then exchanges the resulting authorization
+      code and redirect URI for a Sparx user authentication token. The identity provider is
+      configured per Pro Cloud Server deployment, so there is no vendor-published discovery
+      document or fixed scope list.
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: 'advertised per deployment in the OSLC Service Provider Resource (<protocol>://<server>/<model_name>/oslc/am/sp/)'
+        tokenUrl: '<protocol>://<server>/<model_name>/oslc/am/login/'
+        scopes: {}
+        scopes_note: >-
+          No scope list is published. Authorisation is expressed through Enterprise Architect model
+          security permissions (ss:elementpermission, ss:diagrampermission, ss:readonlymodel)
+          returned at login, not through OAuth scopes. No scopes/ artifact is emitted for that
+          reason.
+    request:
+      endpoint: '<protocol>://<server>/<model_name>/oslc/am/login/'
+      method: POST
+      body: 'sso=openid;code=<AUTHORIZATION CODE>;redirecturi=<REDIRECT URI>;'
+  - name: EAOAccessCode
+    type: apiKey
+    in: header
+    parameter: EAO-Access-Code
+    description: >-
+      An optional shared access code configured per project in the Pro Cloud Server configuration
+      tool. When set, the client must send it as the custom HTTP header EAO-Access-Code on every
+      OSLC request; Pro Cloud Server validates it before processing the request. This layers on top
+      of, and does not replace, the user authentication token.
+    source: https://www.sparxsystems.jp/help/17.0/oslc_access_code.html
+licensing_gate: >-
+  The OSLC RESTful API is available only on a Pro Cloud Server with a paid licence applied. An
+  unlicensed Pro Cloud Server provides secure cloud repository connections and floating licences
+  but not OSLC.

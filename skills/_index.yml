@@ -1,0 +1,27 @@
+generated: '2026-08-29'
+method: generated
+source: >-
+  Grounded in the verbatim MCP tool names published at https://www.sparxsystems.jp/en/MCP/ and the
+  OSLC endpoint forms published at https://www.sparxsystems.jp/help/17.0/ (oslc_user_cred,
+  oslc_serv_provid, query_capability, creation_factory, oslc_access_code,
+  info_accessed_via_oslcam). Enterprise Architect publishes no OpenAPI, so operations are real MCP
+  tool names and real documented OSLC endpoint forms rather than operationIds. Nothing invented.
+skills:
+  - file: sparx-enterprise-architect-explore-model.md
+    name: Explore a Sparx Enterprise Architect model
+    api: mcp/sparx-enterprise-architect-mcp.yml
+    surface: mcp-stdio
+    access: read-only
+    operations: [get_current_diagram, get_current_package, get_current_elements, get_root_packages, get_packages_information, find_packages_by_name, find_elements_by_name, find_element_in_diagrams, get_connectors_information, get_diagram_image, export_element_linked_documents]
+  - file: sparx-enterprise-architect-safe-model-edit.md
+    name: Edit a Sparx Enterprise Architect model safely
+    api: mcp/sparx-enterprise-architect-mcp.yml
+    surface: mcp-stdio
+    access: write
+    operations: [create_baseline, apply_baseline, create_or_update_package, create_or_update_elements, create_or_update_attributes, create_or_update_operations, create_or_update_connectors, create_or_update_messages, create_or_update_diagram, place_elements_on_diagram, layout_connectors, reload_diagrams]
+  - file: sparx-enterprise-architect-oslc-query-and-create.md
+    name: Query and create Enterprise Architect resources over OSLC
+    api: authentication/sparx-enterprise-architect-authentication.yml
+    surface: http-oslc
+    access: read-write
+    operations: ['POST /{model_name}/oslc/am/login/', 'GET /{model_name}/oslc/am/sp/', 'GET /{model_name}/oslc/qc/', 'POST /{model_name}/oslc/cf/', 'GET /{model_name}/oslc/re/{GUID}/', 'GET /{model_name}/oslc/am/logout/']

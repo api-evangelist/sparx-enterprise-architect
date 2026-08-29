@@ -34,7 +34,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sparx-ente
 url: >-
   https://raw.githubusercontent.com/api-evangelist/sparx-enterprise-architect/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-18'
+modified: '2026-08-29'
 specificationVersion: '0.23'
 access: 3rd-Party
 tags:
@@ -43,6 +43,12 @@ tags:
   - Software Engineering
   - Systems Engineering
   - UML
+  - ArchiMate
+  - BPMN
+  - SysML
+  - OSLC
+  - Model Context Protocol
+  - Model-Driven Development
 apis:
   - aid: sparx-enterprise-architect:automation-interface
     name: Enterprise Architect Automation Interface
@@ -104,6 +110,12 @@ apis:
       web-based clients, third-party tools, and automation systems via REST-like
       endpoints for model queries and operations.
     humanURL: https://sparxsystems.com/enterprise_architect_user_guide/17.0/pcs_overview.htm
+    baseURL: 'https://{server}/{model_name}/oslc/'
+    baseURLNote: >-
+      Templated on purpose. Pro Cloud Server is customer-installed software, so the OSLC RESTful API
+      is served by the customer's own host, not by a Sparx Systems host. The provider's own
+      documented example is http://localhost:480/firebird_model/oslc/. There is no vendor-hosted
+      base URL to record.
     tags:
       - Cloud
       - HTTP
@@ -112,7 +124,15 @@ apis:
     properties:
       - type: Documentation
         url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/pcs_overview.htm
+      - type: APIReference
+        url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/the_model_repository/oslc_am_top.html
+      - type: Authentication
+        url: authentication/sparx-enterprise-architect-authentication.yml
+      - type: Conventions
+        url: conventions/sparx-enterprise-architect-conventions.yml
 common:
+  - type: Website
+    url: https://sparxsystems.com/
   - type: DomainSecurity
     url: security/sparx-enterprise-architect-domain-security.yml
   - type: Documentation
@@ -179,6 +199,78 @@ common:
         description: Integrate with Eclipse IDE for model-driven Java development.
       - name: Visual Studio
         description: Integrate with Microsoft Visual Studio for .NET development workflows.
+  - type: MCPServer
+    url: mcp/sparx-enterprise-architect-mcp.yml
+  - type: Packages
+    url: packages/sparx-enterprise-architect-packages.yml
+  - type: LLMsTxt
+    url: llms/sparx-enterprise-architect-llms.txt
+  - type: Authentication
+    url: authentication/sparx-enterprise-architect-authentication.yml
+  - type: Conventions
+    url: conventions/sparx-enterprise-architect-conventions.yml
+  - type: Conformance
+    url: conformance/sparx-enterprise-architect-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/sparx-enterprise-architect-lifecycle.yml
+  - type: ErrorCatalog
+    url: errors/sparx-enterprise-architect-problem-types.yml
+  - type: DataModel
+    url: data-model/sparx-enterprise-architect-data-model.yml
+  - type: ChangeLog
+    url: changelog/sparx-enterprise-architect-changelog.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Plans
+    url: plans/sparx-enterprise-architect-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/sparx-enterprise-architect-rate-limits.yml
+  - type: APIReference
+    url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/automation_and_scripting/automation_interface.htm
+  - type: PrivacyPolicy
+    url: https://sparxsystems.com/privacy.html
+  - type: TermsOfService
+    url: https://sparxsystems.com/products/ea/17.1/eula.html
+  - type: Login
+    url: https://sparxsystems.com/products/ea/login.html
+  - type: SignUp
+    url: https://www.sparxsystems.us/enterprise-architect/download-free-trial
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+
+x-enrichment:
+  date: '2026-08-29'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
+x-coverage:
+  state: covered
+  reason: covered
+  detail: >-
+    Enterprise Architect is a licensed desktop modelling product, so its programmatic surface is
+    real but never vendor-hosted: a first-party STDIO MCP server (v2.8.11, 38 tools) and a
+    documented OSLC Architecture Management 2.0 RESTful API that runs on the customer's own Pro
+    Cloud Server. Contract discovery was run in full and found no OpenAPI/GraphQL/AsyncAPI on any
+    vendor origin, correctly, because the only machine-readable discovery document is the OSLC
+    Service Provider Resource served by each customer's own deployment. Note for future runs:
+    sparxsystems.com and sparxsystems.com.au serve a Cloudflare managed challenge (HTTP 403) to
+    every non-browser client, so all documentation was read from the Sparx Systems Japan help
+    mirror (www.sparxsystems.jp/help/17.0/) and the Sparx Systems North America site
+    (www.sparxsystems.us), both Sparx Systems entities. Every sparxsystems.com pointer in this file
+    returned the same ~5.7KB challenge body, which is a bot policy and not a dead page — none were
+    removed.
+  evidence:
+    - url: https://www.sparxsystems.jp/en/MCP/
+      status: 200
+    - url: https://www.sparxsystems.jp/help/17.0/oslc_user_cred.html
+      status: 200
+    - url: https://www.sparxsystems.us/llms.txt
+      status: 200
+    - url: https://www.sparxsystems.us/openapi.json
+      status: 404
+    - url: https://sparxsystems.com/.well-known/agent-card.json
+      status: 404
+    - url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/pcs_overview.htm
+      status: 403
+  checked: '2026-08-29'

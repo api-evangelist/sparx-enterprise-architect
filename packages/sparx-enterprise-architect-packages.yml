@@ -1,0 +1,73 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  registry.npmjs.org search, pypi.org, azuresearch-usnc.nuget.org query,
+  api.github.com org search, https://www.sparxsystems.jp/en/MCP/
+description: >-
+  Sparx Systems ships no first-party client library to any public package registry. Its
+  programmatic surface is delivered as Windows binaries: the COM Automation Interface type
+  library that installs with Enterprise Architect itself, and the MSI-distributed MCP server
+  add-in. The finding matters for an integrator — there is nothing to `npm install` or
+  `pip install`, and no versioned dependency an agent can pin.
+packages:
+  - language: dotnet-com
+    registry: bundled
+    name: Interop.EA (Enterprise Architect Automation Interface type library)
+    url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/automation_and_scripting/automation_interface.htm
+    install: Installed with Enterprise Architect; reference the EA type library / Interop.EA.dll from the EA program directory.
+    official: true
+    version: null
+    published: null
+    note: >-
+      Versioned with the Enterprise Architect product (17.x), not independently. There is no
+      registry metadata endpoint to query, and no standalone download — the assembly is only
+      present once Enterprise Architect is installed, so a consumer cannot resolve it by version.
+  - language: dotnet
+    registry: direct-download
+    name: MCP_EA_x64.msi (MCP Server for Enterprise Architect, 64-bit)
+    url: https://www.sparxsystems.jp/en/MCP/bin/MCP_EA_x64.msi
+    install: Download and run the MSI on a Windows host that already has Enterprise Architect installed.
+    official: true
+    version: 2.8.11
+    published: '2026-08-13'
+    note: >-
+      Version and date read from the provider's own release notes page
+      (https://www.sparxsystems.jp/en/MCP/releases.htm). The download URL is unpinned and floats
+      to the latest build, so a consumer downloading it cannot tell from the URL which version
+      they are getting.
+  - language: dotnet
+    registry: direct-download
+    name: MCP_EA_x86.msi (MCP Server for Enterprise Architect, 32-bit)
+    url: https://www.sparxsystems.jp/en/MCP/bin/MCP_EA_x86.msi
+    install: Download and run the MSI. Required for 32-bit Enterprise Architect and for EA 15.2 or earlier.
+    official: true
+    version: 2.8.11
+    published: '2026-08-13'
+    note: Unpinned download URL; same floating-to-latest caveat as the x64 installer.
+registries_checked:
+  - registry: npm
+    query: 'sparx enterprise architect'
+    result: no first-party package
+  - registry: pypi
+    queried: [sparx-ea, enterprise-architect, ea-mcp, sparxsystems]
+    result: 404 on every candidate
+  - registry: nuget
+    query: 'sparx enterprise architect'
+    result: >-
+      Five results, all third-party community packages built ON the Automation Interface —
+      MDD4All.EnterpriseArchitect.Manipulations 3.1.0.2, EA.Gen.Addin 1.1.7, EA.Gen.Model 1.2.5,
+      MDD4All.SpecIF.DataProvider.EA 3.0.1.18, MDD4All.SpecIF.DataIntegrator.EA 3.0.0.8. None are
+      published by Sparx Systems.
+  - registry: github
+    query: 'org:sparxsystems'
+    result: >-
+      One public repository (sparxsystems/krino, C#, an unrelated AI research project, last pushed
+      2022-11-25, 0 stars). No first-party SDK, no OpenAPI, no .proto. The widely used Enterprise
+      Architect tooling on GitHub (GeertBellekens/Enterprise-Architect-Toolpack and
+      Enterprise-Architect-Add-in-Framework, Helmut-Ortmann/EnterpriseArchitect_hoTools) is
+      community-maintained, not first-party.
+sdk_pointer_withheld: >-
+  No `SDKs` pointer is emitted. The only first-party client library is a COM type library bundled
+  inside a licensed Windows install; there is no independently distributed, versionable client
+  library in any language for the OSLC HTTP API. Emitting an SDK pointer would credit a
+  downloadable SDK the provider does not ship.

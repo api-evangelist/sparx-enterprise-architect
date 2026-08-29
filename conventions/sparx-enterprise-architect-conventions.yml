@@ -1,0 +1,169 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://www.sparxsystems.jp/help/17.0/oslc_am_top.html,
+  https://www.sparxsystems.jp/help/17.0/query_capability.html,
+  https://www.sparxsystems.jp/help/17.0/creation_factory.html,
+  https://www.sparxsystems.jp/help/17.0/oslc_serv_provid.html,
+  https://www.sparxsystems.jp/help/17.0/info_accessed_via_oslcam.html,
+  https://www.sparxsystems.jp/en/MCP/
+description: >-
+  Cross-cutting request/response semantics for the two programmatic surfaces an integrator can
+  actually call: the Pro Cloud Server OSLC Architecture Management 2.0 RESTful API, and the STDIO
+  MCP server. Enterprise Architect publishes no OpenAPI, so every convention below is read from
+  the provider's own documentation rather than derived from a spec.
+surfaces:
+  http:
+    name: Pro Cloud Server OSLC Architecture Management 2.0 RESTful API
+    deployment: customer-installed; base host is the customer's own Pro Cloud Server
+    base_url_template: '<protocol>://<server>/<model_name>/oslc/'
+    example_from_docs: 'http://localhost:480/firebird_model/oslc/'
+  local:
+    name: MCP Server for Enterprise Architect
+    transport: stdio
+    deployment: Windows add-in inside a licensed Enterprise Architect install
+endpoints:
+  - path: '/{model_name}/oslc/am/login/'
+    method: POST
+    purpose: Obtain the user authentication token.
+  - path: '/{model_name}/oslc/am/logout/?useridentifier={token}'
+    method: GET
+    purpose: Invalidate the token.
+  - path: '/{model_name}/oslc/am/sp/'
+    method: GET
+    purpose: >-
+      Service Provider Resource — the machine-readable discovery document. It names the URL to POST
+      to in order to create resources, the URL to GET existing resources, and the URLs for the
+      resource-shape metadata describing both the creation payload and the resource representation.
+      This is the closest thing to a machine-readable contract the provider publishes, and it is
+      served by the customer's own deployment.
+  - path: '/{model_name}/oslc/cf/'
+    method: POST
+    purpose: Creation Factory — create a new resource by POSTing an RDF/XML representation.
+  - path: '/{model_name}/oslc/qc/'
+    method: GET
+    purpose: Query Capability — query the model, returns RDF/XML.
+  - path: '/{model_name}/oslc/re/{resource_GUID}/'
+    method: GET
+    purpose: Individual resource by GUID. This URL appears as rdf:about on each queried resource.
+authentication:
+  style: token obtained by form POST, passed as the useridentifier parameter
+  optional_shared_secret_header: EAO-Access-Code
+  see: authentication/sparx-enterprise-architect-authentication.yml
+media_types:
+  request: application/rdf+xml
+  response: application/rdf+xml
+  note: >-
+    RDF/XML only. No JSON representation is documented. Namespaces in use are rdf, oslc_rm
+    (http://open-services.net/ns/rm#), dcterms (Dublin Core Metadata Element Set 1.1), foaf, and
+    the vendor namespace ss (http://www.sparxsystems.com.au/oslc_am#).
+query:
+  style: OSLC query parameters on the Query Capability URL
+  parameters:
+    - oslc.where
+    - oslc.select
+    - oslc.properties
+    - oslc.prefix
+  pagination:
+    documented: false
+    note: >-
+      No paging parameter, page-size limit, or continuation token is documented for the Query
+      Capability. An integrator querying a large repository has no published way to bound a result
+      set other than narrowing oslc.where.
+field_selection:
+  supported: true
+  mechanism: oslc.select and oslc.properties (OSLC Selective Properties conformance)
+metadata:
+  tagged_values: >-
+    Enterprise Architect tagged values are first-class and are readable, creatable, updatable and
+    deletable through OSLC on packages, elements, attributes and operations.
+request_tracing:
+  request_id_header: none documented
+versioning:
+  scheme: product release train
+  current: >-
+    OSLC Architecture Management v2.0; served by Enterprise Architect 17.x with Pro Cloud Server
+    6.x. The API version is not carried in the URL path — /oslc/am/ is fixed and the behaviour
+    tracks the installed Pro Cloud Server build.
+  provider_statement: >-
+    The provider states OSLC Architecture Management v2.0 functionality will continue to be
+    improved, with changes announced in the release notes.
+error_envelope:
+  format: RDF/XML error response (OSLC Error Responses conformance)
+  see: errors/sparx-enterprise-architect-problem-types.yml
+rate_limit_signaling:
+  documented: false
+  see: rate-limits/sparx-enterprise-architect-rate-limits.yml
+idempotency:
+  supported: false
+  note: >-
+    No idempotency key, no request-deduplication header, and no client-supplied request identifier
+    is documented for the Creation Factory or for any OSLC update. A retried POST to /oslc/cf/
+    creates a second element. No Idempotency pointer is emitted.
+dry_run_mode:
+  supported: false
+  note: No preview/validate-only mode is documented on any write path.
+reversibility:
+  grade: documented
+  applies_to: write
+  note: >-
+    Enterprise Architect is a write-heavy modelling repository, so reversibility is the sharpest
+    question an agent can ask before acting on it — and the answer differs starkly between the two
+    surfaces.
+  write_surfaces:
+    - surface: MCP server (create/update/delete tools)
+      reversal:
+        operation: apply_baseline
+        mechanism: >-
+          Capture a package baseline with create_baseline before the agent acts, then restore the
+          package with apply_baseline. This is a real, first-party, tool-level undo path exposed
+          over MCP.
+        window: null
+        window_note: >-
+          No retention window is stated. A baseline persists in the model until deleted, so the
+          practical window is "as long as the baseline is kept" — but the provider does not state
+          this, so it is recorded as unstated rather than unlimited.
+      audit_trail:
+        operation: '-modifiedInfoPath <csv>'
+        note: >-
+          Launch flag that appends every AI add/edit/delete to a CSV, so AI-authored changes can be
+          identified after the fact. An audit trail, not a reversal.
+      provider_warning: >-
+        The provider explicitly warns that deletion is not reliably scoped: during their own
+        testing an instruction to delete a package's tagged values deleted the entire package.
+        Both -enableEdit and -enableDelete are off by default, and the provider recommends backing
+        up the project before enabling either.
+      evidence: https://www.sparxsystems.jp/en/MCP/
+    - surface: Pro Cloud Server OSLC (Creation Factory, partial update, resource removal)
+      reversal:
+        operation: null
+        mechanism: none published
+        window: null
+      note: >-
+        OSLC supports Resource Removal and Partial Resource Update, but no cancel, undo, restore or
+        soft-delete path is documented, and the provider states that OSLC updates are NOT written
+        to the Enterprise Architect audit log even when auditing is enabled. An agent writing over
+        OSLC therefore has neither a reversal operation nor an audit record of what it changed.
+        This is the single most important runtime fact in this file.
+      evidence: https://www.sparxsystems.jp/help/17.0/info_accessed_via_oslcam.html
+constraints:
+  - >-
+    Creation Factory requires the OSLC properties title and packageID in the RDF payload, and the
+    packageID must name a package that already exists in the target model. A client must run a
+    Query Capability request first to obtain a valid packageID.
+  - >-
+    The OSLC properties identifier, created and modified are read-only and cannot be set.
+  - >-
+    An empty value for a constrained property (the docs use ss:difficulty) is an error, not a
+    no-op.
+  - >-
+    Element type strings passed to the MCP creation tools must exactly match the Automation
+    Interface type names; the server ships MCP prompts (UML, SysML 1.5, BPMN 2.0) specifically to
+    supply those strings to the model.
+cross_links:
+  authentication: authentication/sparx-enterprise-architect-authentication.yml
+  errors: errors/sparx-enterprise-architect-problem-types.yml
+  lifecycle: lifecycle/sparx-enterprise-architect-lifecycle.yml
+  rate_limits: rate-limits/sparx-enterprise-architect-rate-limits.yml
+  data_model: data-model/sparx-enterprise-architect-data-model.yml
+  mcp: mcp/sparx-enterprise-architect-mcp.yml
