@@ -34,7 +34,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sparx-ente
 url: >-
   https://raw.githubusercontent.com/api-evangelist/sparx-enterprise-architect/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-08-29'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 access: 3rd-Party
 tags:
@@ -143,6 +143,10 @@ apis:
       - type: Conventions
         url: conventions/sparx-enterprise-architect-conventions.yml
 common:
+  - url: https://sparxsystems.com/prolaborate/articles
+    type: Blog
+  - url: https://sparxsystems.com/prolaborate/feed
+    type: BlogRSS
   - type: Website
     url: https://sparxsystems.com/
   - type: DomainSecurity
