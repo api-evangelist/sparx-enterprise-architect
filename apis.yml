@@ -143,6 +143,8 @@ apis:
       - type: Conventions
         url: conventions/sparx-enterprise-architect-conventions.yml
 common:
+  - type: FinOps
+    url: finops/sparx-enterprise-architect-finops.yml
   - url: https://sparxsystems.com/prolaborate/articles
     type: Blog
   - url: https://sparxsystems.com/prolaborate/feed
