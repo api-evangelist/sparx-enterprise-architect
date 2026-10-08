@@ -133,3 +133,51 @@ related_products:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - seat
+  units:
+  - seat
+  plans:
+  - name: Free Trial
+    access: trial
+    model: free
+    model_how: derived
+    units: []
+    periods:
+    - other
+  - name: Professional Edition
+    access: paid
+    model: unstated
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - other
+  - name: Corporate Edition
+    access: paid
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - other
+  - name: Unified Edition
+    access: paid
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - other
+  - name: Ultimate Edition
+    access: paid
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - other
