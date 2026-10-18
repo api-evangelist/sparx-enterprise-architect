@@ -74,6 +74,13 @@ apis:
     tags:
       - Automation
       - COM
+      - Diagramming
+      - Elements
+      - Models
+      - Repository
+    tags_raw:
+      - Automation
+      - COM
       - Diagrams
       - Elements
       - Models
