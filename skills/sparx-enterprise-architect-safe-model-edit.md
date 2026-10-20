@@ -1,5 +1,6 @@
 ---
-name: Edit a Sparx Enterprise Architect model safely
+name: safe-model-edit
+title: "Edit a Sparx Enterprise Architect model safely"
 description: >-
   Create or change elements, attributes, operations, connectors and diagrams in a live Enterprise
   Architect repository, with a baseline captured first so the change can be undone.

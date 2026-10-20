@@ -1,5 +1,6 @@
 ---
-name: Explore a Sparx Enterprise Architect model
+name: explore-model
+title: "Explore a Sparx Enterprise Architect model"
 description: >-
   Answer questions about a live Enterprise Architect repository — what is on the current diagram,
   where an element is used, what a package contains — using only read tools, with no risk of

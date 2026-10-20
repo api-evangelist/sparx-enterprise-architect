@@ -1,12 +1,16 @@
 aid: sparx-enterprise-architect
+
 name: Sparx Enterprise Architect
+
 description: >-
   Sparx Enterprise Architect is a comprehensive modeling, design, and management
   platform for enterprise architecture, software engineering, and systems
   engineering. It provides automation APIs including a COM Automation Interface,
   Add-In Framework, and scripting capabilities for programmatic access to models,
   diagrams, elements, connectors, and repository management.
+
 type: Index
+
 deliveryModel:
   model: saas
   open_source: false
@@ -18,6 +22,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: freemium
   onboarding: unknown
@@ -30,13 +35,20 @@ accessModel:
   - plans
   generated: '2026-07-22'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sparx-enterprise-architect.png
+
 url: >-
   https://raw.githubusercontent.com/api-evangelist/sparx-enterprise-architect/refs/heads/main/apis.yml
+
 created: '2026-03-16'
+
 modified: '2026-10-06'
+
 specificationVersion: '0.23'
+
 access: 3rd-Party
+
 tags:
   - Enterprise Architecture
   - Modeling
@@ -49,6 +61,7 @@ tags:
   - OSLC
   - MCP
   - Model-Driven Development
+
 tags_raw:
   - Enterprise Architecture
   - Modeling
@@ -61,6 +74,129 @@ tags_raw:
   - OSLC
   - Model Context Protocol
   - Model-Driven Development
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+
+common:
+  - type: LLMsTxt
+    url: llms/sparx-enterprise-architect-north-america-llms.txt
+  - type: Hosts
+    url: hosts/sparx-enterprise-architect-hosts.yml
+  - type: Vendors
+    url: vendors/sparx-enterprise-architect-vendors.yml
+  - type: SDKs
+    url: https://sparxsystems.com/resources/libraries/
+  - type: Newsroom
+    url: https://sparxsystems.com/press/
+  - type: DeveloperPortal
+    url: https://sparxsystems.com/resources/developers/
+  - type: FinOps
+    url: finops/sparx-enterprise-architect-finops.yml
+  - url: https://sparxsystems.com/prolaborate/articles
+    type: Blog
+  - url: https://sparxsystems.com/prolaborate/feed
+    type: BlogRSS
+  - type: Website
+    url: https://sparxsystems.com/
+  - type: DomainSecurity
+    url: security/sparx-enterprise-architect-domain-security.yml
+  - type: Documentation
+    url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/
+  - type: GettingStarted
+    url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/getting_started.htm
+  - type: Pricing
+    url: https://sparxsystems.com/products/ea/pricing.html
+  - type: Support
+    url: https://sparxsystems.com/support/
+  - type: Blog
+    url: https://sparxsystems.com/resources/blog/
+  - type: X
+    url: https://x.com/SparxSystems
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/sparx-systems/
+  - type: YouTube
+    url: https://www.youtube.com/user/SparxSystems
+  - type: Features
+    data:
+      - name: UML Modeling
+        description: Comprehensive support for all 14 UML 2.5 diagram types for software and systems design.
+      - name: ArchiMate Support
+        description: Native ArchiMate 3.2 modeling for enterprise architecture frameworks.
+      - name: BPMN Process Modeling
+        description: Business process modeling with BPMN 2.0 for workflow and process documentation.
+      - name: Code Generation
+        description: Generate source code in C++, Java, C#, Python, PHP, and other languages from UML models.
+      - name: Reverse Engineering
+        description: Import existing codebases to create UML models from source code automatically.
+      - name: Model Simulation
+        description: Execute and simulate state machines and activity diagrams for validation.
+      - name: Document Generation
+        description: Generate rich documentation from models in RTF, HTML, PDF, and DOCX formats.
+      - name: Team Collaboration
+        description: Multi-user repository access with role-based security and version control integration.
+  - type: UseCases
+    data:
+      - name: Enterprise Architecture Governance
+        description: Define and maintain enterprise architecture models aligned with TOGAF, Zachman, or ArchiMate frameworks.
+      - name: Software Design Documentation
+        description: Create detailed software designs with UML class, sequence, and component diagrams.
+      - name: Requirements Management
+        description: Capture, trace, and manage requirements from stakeholder needs through to implementation.
+      - name: Database Design
+        description: Model database schemas with ER diagrams and generate DDL scripts for multiple databases.
+      - name: Model-Driven Development
+        description: Use models as the primary artifact for generating code, tests, and documentation.
+  - type: Integrations
+    data:
+      - name: Jira
+        description: Integrate with Atlassian Jira for requirements traceability and issue tracking.
+      - name: Azure DevOps
+        description: Connect to Azure DevOps for work item synchronization and version control.
+      - name: Git
+        description: Version control model packages with Git repositories.
+      - name: Eclipse
+        description: Integrate with Eclipse IDE for model-driven Java development.
+      - name: Visual Studio
+        description: Integrate with Microsoft Visual Studio for .NET development workflows.
+  - type: MCPServer
+    url: mcp/sparx-enterprise-architect-mcp.yml
+  - type: Packages
+    url: packages/sparx-enterprise-architect-packages.yml
+  - type: LLMsTxt
+    url: llms/sparx-enterprise-architect-llms.txt
+  - type: Authentication
+    url: authentication/sparx-enterprise-architect-authentication.yml
+  - type: Conventions
+    url: conventions/sparx-enterprise-architect-conventions.yml
+  - type: Conformance
+    url: conformance/sparx-enterprise-architect-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/sparx-enterprise-architect-lifecycle.yml
+  - type: ErrorCatalog
+    url: errors/sparx-enterprise-architect-problem-types.yml
+  - type: DataModel
+    url: data-model/sparx-enterprise-architect-data-model.yml
+  - type: ChangeLog
+    url: changelog/sparx-enterprise-architect-changelog.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Plans
+    url: plans/sparx-enterprise-architect-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/sparx-enterprise-architect-rate-limits.yml
+  - type: APIReference
+    url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/automation_and_scripting/automation_interface.htm
+  - type: PrivacyPolicy
+    url: https://sparxsystems.com/privacy.html
+  - type: TermsOfService
+    url: https://sparxsystems.com/products/ea/17.1/eula.html
+  - type: Login
+    url: https://sparxsystems.com/products/ea/login.html
+  - type: SignUp
+    url: https://www.sparxsystems.us/enterprise-architect/download-free-trial
+
 apis:
   - aid: sparx-enterprise-architect:automation-interface
     name: Enterprise Architect Automation Interface
@@ -149,126 +285,13 @@ apis:
         url: authentication/sparx-enterprise-architect-authentication.yml
       - type: Conventions
         url: conventions/sparx-enterprise-architect-conventions.yml
-common:
-  - type: FinOps
-    url: finops/sparx-enterprise-architect-finops.yml
-  - url: https://sparxsystems.com/prolaborate/articles
-    type: Blog
-  - url: https://sparxsystems.com/prolaborate/feed
-    type: BlogRSS
-  - type: Website
-    url: https://sparxsystems.com/
-  - type: DomainSecurity
-    url: security/sparx-enterprise-architect-domain-security.yml
-  - type: Documentation
-    url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/
-  - type: GettingStarted
-    url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/getting_started.htm
-  - type: Pricing
-    url: https://sparxsystems.com/products/ea/pricing.html
-  - type: Support
-    url: https://sparxsystems.com/support/
-  - type: FAQ
-    url: https://sparxsystems.com/resources/faq/
-  - type: Training
-    url: https://sparxsystems.com/training/
-  - type: ReleaseNotes
-    url: https://sparxsystems.com/products/ea/release_notes.html
-  - type: Blog
-    url: https://sparxsystems.com/resources/blog/
-  - type: X
-    url: https://x.com/SparxSystems
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/sparx-systems/
-  - type: YouTube
-    url: https://www.youtube.com/user/SparxSystems
-  - type: Features
-    data:
-      - name: UML Modeling
-        description: Comprehensive support for all 14 UML 2.5 diagram types for software and systems design.
-      - name: ArchiMate Support
-        description: Native ArchiMate 3.2 modeling for enterprise architecture frameworks.
-      - name: BPMN Process Modeling
-        description: Business process modeling with BPMN 2.0 for workflow and process documentation.
-      - name: Code Generation
-        description: Generate source code in C++, Java, C#, Python, PHP, and other languages from UML models.
-      - name: Reverse Engineering
-        description: Import existing codebases to create UML models from source code automatically.
-      - name: Model Simulation
-        description: Execute and simulate state machines and activity diagrams for validation.
-      - name: Document Generation
-        description: Generate rich documentation from models in RTF, HTML, PDF, and DOCX formats.
-      - name: Team Collaboration
-        description: Multi-user repository access with role-based security and version control integration.
-  - type: UseCases
-    data:
-      - name: Enterprise Architecture Governance
-        description: Define and maintain enterprise architecture models aligned with TOGAF, Zachman, or ArchiMate frameworks.
-      - name: Software Design Documentation
-        description: Create detailed software designs with UML class, sequence, and component diagrams.
-      - name: Requirements Management
-        description: Capture, trace, and manage requirements from stakeholder needs through to implementation.
-      - name: Database Design
-        description: Model database schemas with ER diagrams and generate DDL scripts for multiple databases.
-      - name: Model-Driven Development
-        description: Use models as the primary artifact for generating code, tests, and documentation.
-  - type: Integrations
-    data:
-      - name: Jira
-        description: Integrate with Atlassian Jira for requirements traceability and issue tracking.
-      - name: Azure DevOps
-        description: Connect to Azure DevOps for work item synchronization and version control.
-      - name: Git
-        description: Version control model packages with Git repositories.
-      - name: Eclipse
-        description: Integrate with Eclipse IDE for model-driven Java development.
-      - name: Visual Studio
-        description: Integrate with Microsoft Visual Studio for .NET development workflows.
-  - type: MCPServer
-    url: mcp/sparx-enterprise-architect-mcp.yml
-  - type: Packages
-    url: packages/sparx-enterprise-architect-packages.yml
-  - type: LLMsTxt
-    url: llms/sparx-enterprise-architect-llms.txt
-  - type: Authentication
-    url: authentication/sparx-enterprise-architect-authentication.yml
-  - type: Conventions
-    url: conventions/sparx-enterprise-architect-conventions.yml
-  - type: Conformance
-    url: conformance/sparx-enterprise-architect-conformance.yml
-  - type: Lifecycle
-    url: lifecycle/sparx-enterprise-architect-lifecycle.yml
-  - type: ErrorCatalog
-    url: errors/sparx-enterprise-architect-problem-types.yml
-  - type: DataModel
-    url: data-model/sparx-enterprise-architect-data-model.yml
-  - type: ChangeLog
-    url: changelog/sparx-enterprise-architect-changelog.yml
-  - type: AgentSkill
-    url: skills/_index.yml
-  - type: Plans
-    url: plans/sparx-enterprise-architect-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/sparx-enterprise-architect-rate-limits.yml
-  - type: APIReference
-    url: https://sparxsystems.com/enterprise_architect_user_guide/17.0/automation_and_scripting/automation_interface.htm
-  - type: PrivacyPolicy
-    url: https://sparxsystems.com/privacy.html
-  - type: TermsOfService
-    url: https://sparxsystems.com/products/ea/17.1/eula.html
-  - type: Login
-    url: https://sparxsystems.com/products/ea/login.html
-  - type: SignUp
-    url: https://www.sparxsystems.us/enterprise-architect/download-free-trial
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
 
 x-enrichment:
-  date: '2026-08-29'
+  date: '2026-10-20'
   status: enriched
-  artifacts_added: 16
-  pass: local-v1
+  artifacts_added: 0
+  pass: local-v5
+
 x-coverage:
   state: covered
   reason: covered

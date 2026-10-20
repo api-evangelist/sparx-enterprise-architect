@@ -1,0 +1,16 @@
+generated: '2026-10-20'
+method: none
+source:
+- https://zapier.com/apps/sparx-enterprise-architect/integrations
+- https://n8n.io/integrations/sparx-enterprise-architect/
+- https://composio.dev/toolkits/sparx-enterprise-architect
+- https://monid.ai/tools/sparx-enterprise-architect
+checked:
+- https://composio.dev/toolkits/sparx-enterprise-architect
+- https://monid.ai/tools/sparx-enterprise-architect
+- https://n8n.io/integrations/sparx-enterprise-architect/
+- https://zapier.com/apps/sparx-enterprise-architect/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

@@ -1,5 +1,6 @@
 ---
-name: Query and create Enterprise Architect resources over OSLC
+name: oslc-query-and-create
+title: "Query and create Enterprise Architect resources over OSLC"
 description: >-
   Integrate with a remote Enterprise Architect repository over the Pro Cloud Server OSLC
   Architecture Management 2.0 RESTful API — authenticate, discover services, query the model, and

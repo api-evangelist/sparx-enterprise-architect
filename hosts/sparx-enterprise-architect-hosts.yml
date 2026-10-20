@@ -1,0 +1,165 @@
+generated: '2026-10-20'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 13
+  own: 8
+  other_domain: 2
+  platform: 3
+  roles:
+  - api
+  - community
+  - identity
+  - other
+  - website
+hosts:
+- host: api.sparxsystems.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: sparxsystems.com
+  role: api
+  relation: own
+- host: api.sparxsystems.us
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: sparxsystems.us
+  role: api
+  relation: other-domain
+- host: community.sparxsystems.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: sparxsystems.com
+  role: community
+  relation: own
+- host: kernaro.sparxsystems.com
+  found_by:
+  - probed
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: sparxsystems.com
+  role: other
+  relation: own
+- host: prolaborate.sparxsystems.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: sparxsystems.com
+  role: other
+  relation: own
+- host: shop.sparxsystems.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: sparxsystems.com
+  role: other
+  relation: own
+- host: solutions.sparxsystems.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: sparxsystems.com
+  role: other
+  relation: own
+- host: sparxsystems.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - SDKs
+  - Newsroom
+  - DeveloperPortal
+  - Blog
+  - BlogRSS
+  - Website
+  - Documentation
+  - GettingStarted
+  - Pricing
+  - Support
+  - APIReference
+  - PrivacyPolicy
+  - TermsOfService
+  - Login
+  serves:
+  - docs
+  - cdn
+  vendor: cloudflare
+  registrable_domain: sparxsystems.com
+  role: website
+  relation: own
+- host: trerado.sparxsystems.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: sparxsystems.com
+  role: other
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: www.sparxsystems.us
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - SignUp
+  serves:
+  - cdn
+  vendor: cloudfront
+  registrable_domain: sparxsystems.us
+  role: identity
+  relation: other-domain
+- host: www.youtube.com
+  found_by:
+  - pointer
+  types:
+  - YouTube
+  serves: []
+  registrable_domain: youtube.com
+  role: other
+  relation: platform
+- host: x.com
+  found_by:
+  - pointer
+  types:
+  - X
+  serves: []
+  registrable_domain: x.com
+  role: other
+  relation: platform
