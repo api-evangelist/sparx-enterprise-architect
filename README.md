@@ -1,4 +1,4 @@
-# Sparx Enterprise Architect (sparx-enterprise-architect)
+# Sparx Enterprise Architect
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,123 +66,118 @@
 
 Sparx Enterprise Architect is a comprehensive modeling, design, and management platform for enterprise architecture, software engineering, and systems engineering. It provides automation APIs including a COM Automation Interface, Add-In Framework, and scripting capabilities for programmatic access to models, diagrams, elements, connectors, and repository management.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/sparx-enterprise-architect/refs/heads/main/apis.yml)
+**Areas:** Enterprise Architecture · Modeling · Software Engineering · Systems Engineering · UML · ArchiMate · BPMN · SysML · OSLC · MCP · Model-Driven Development
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Sparx Enterprise Architect on APIs.io
 
-## Tags:
+Everything profiled for Sparx Enterprise Architect is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sparx-enterprise-architect/](https://apis.io/providers/sparx-enterprise-architect/)** — or go straight to one of the APIs or properties below.
 
- - Enterprise Architecture, Modeling, Software Engineering, Systems Engineering, UML
+### APIs (4)
 
-## Timestamps
+- [Enterprise Architect Automation Interface](https://apis.io/apis/sparx-enterprise-architect/automation-interface/) — COM-based Automation Interface providing programmatic access to Enterprise Architect repositories, models, packages, elements, diagrams, connectors,…
+- [Enterprise Architect Add-In Framework](https://apis.io/apis/sparx-enterprise-architect/add-in-framework/) — Framework for building custom add-ins that extend Enterprise Architect with new functionality. Add-ins can respond to application events, add custom menu…
+- [Enterprise Architect Scripting](https://apis.io/apis/sparx-enterprise-architect/scripting/) — Built-in scripting engine supporting JavaScript, JScript, and VBScript for automating tasks within Enterprise Architect. Scripts can access the full…
+- [Pro Cloud Server API](https://apis.io/apis/sparx-enterprise-architect/pro-cloud-server-api/) — HTTP-based API provided by the Sparx Systems Pro Cloud Server for remote access to Enterprise Architect repositories. Enables integration with web-based…
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-18
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Enterprise Architect Automation Interface
-COM-based Automation Interface providing programmatic access to Enterprise Architect repositories, models, packages, elements, diagrams, connectors, attributes, and tagged values. Supports creating, reading, updating, and deleting model elements through the Repository, Element, Diagram, Package, and Connector object hierarchy.
+#### MCP servers (1)
 
-**Human URL:** [https://sparxsystems.com/enterprise_architect_user_guide/17.0/automation.htm](https://sparxsystems.com/enterprise_architect_user_guide/17.0/automation.htm)
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags:
+- [MCP Server for Enterprise Architect](https://apis.io/servers/sparx-enterprise-architect/mcp-server-for-enterprise-architect/)
 
- - Automation, COM, Diagrams, Elements, Models, Repository
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://sparxsystems.com/enterprise_architect_user_guide/17.0/automation.htm)
-- [APIReference](https://sparxsystems.com/enterprise_architect_user_guide/17.0/automation_and_scripting/automation_interface.htm)
+- [Sparx Enterprise Architect Authentication](https://apis.io/security/sparx-enterprise-architect/sparx-enterprise-architect-authentication/)
+- [Sparx Enterprise Architect Domain Security](https://apis.io/security/sparx-enterprise-architect/sparx-enterprise-architect-domain-security/)
 
-### Enterprise Architect Add-In Framework
-Framework for building custom add-ins that extend Enterprise Architect with new functionality. Add-ins can respond to application events, add custom menu items, and integrate with external systems using COM interop from .NET, Java, or other languages.
+#### Plans and pricing (1)
 
-**Human URL:** [https://sparxsystems.com/enterprise_architect_user_guide/17.0/add-ins_2.htm](https://sparxsystems.com/enterprise_architect_user_guide/17.0/add-ins_2.htm)
+Published plans, tiers and prices.
 
-#### Tags:
+- [Sparx Enterprise Architect Plans Pricing](https://apis.io/plans/sparx-enterprise-architect/sparx-enterprise-architect-plans-pricing/)
 
- - Add-Ins, Extensions, Plugins
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://sparxsystems.com/enterprise_architect_user_guide/17.0/add-ins_2.htm)
+- [Sparx Enterprise Architect Rate Limits](https://apis.io/rate-limits/sparx-enterprise-architect/sparx-enterprise-architect-rate-limits/)
 
-### Enterprise Architect Scripting
-Built-in scripting engine supporting JavaScript, JScript, and VBScript for automating tasks within Enterprise Architect. Scripts can access the full automation interface to manipulate models, generate reports, validate models, and perform bulk operations.
+#### FinOps (1)
 
-**Human URL:** [https://sparxsystems.com/enterprise_architect_user_guide/17.0/scripting.htm](https://sparxsystems.com/enterprise_architect_user_guide/17.0/scripting.htm)
+What the API costs to run, by operation.
 
-#### Tags:
+- [Sparx Enterprise Architect Finops](https://apis.io/finops/sparx-enterprise-architect/sparx-enterprise-architect-finops/)
 
- - Automation, JavaScript, Scripting, VBScript
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://sparxsystems.com/enterprise_architect_user_guide/17.0/scripting.htm)
-
-### Pro Cloud Server API
-HTTP-based API provided by the Sparx Systems Pro Cloud Server for remote access to Enterprise Architect repositories. Enables integration with web-based clients, third-party tools, and automation systems via REST-like endpoints for model queries and operations.
-
-**Human URL:** [https://sparxsystems.com/enterprise_architect_user_guide/17.0/pcs_overview.htm](https://sparxsystems.com/enterprise_architect_user_guide/17.0/pcs_overview.htm)
-
-#### Tags:
-
- - Cloud, HTTP, Remote Access, Repository
-
-#### Properties
-
-- [Documentation](https://sparxsystems.com/enterprise_architect_user_guide/17.0/pcs_overview.htm)
-
-## Common Properties
-
+- [Website](https://sparxsystems.com/)
 - [Documentation](https://sparxsystems.com/enterprise_architect_user_guide/17.0/)
-- [GettingStarted](https://sparxsystems.com/enterprise_architect_user_guide/17.0/getting_started.htm)
+- [Getting started](https://sparxsystems.com/enterprise_architect_user_guide/17.0/getting_started.htm)
+- [API reference](https://sparxsystems.com/enterprise_architect_user_guide/17.0/automation_and_scripting/automation_interface.htm)
 - [Pricing](https://sparxsystems.com/products/ea/pricing.html)
+- [Sign up](https://www.sparxsystems.us/enterprise-architect/download-free-trial)
 - [Support](https://sparxsystems.com/support/)
-- [FAQ](https://sparxsystems.com/resources/faq/)
-- [Training](https://sparxsystems.com/training/)
-- [ReleaseNotes](https://sparxsystems.com/products/ea/release_notes.html)
-- [Blog](https://sparxsystems.com/resources/blog/)
-- [X](https://x.com/SparxSystems)
-- [LinkedIn](https://www.linkedin.com/company/sparx-systems/)
-- [YouTube](https://www.youtube.com/user/SparxSystems)
+- [Blog](https://sparxsystems.com/prolaborate/articles)
+- [Terms of service](https://sparxsystems.com/products/ea/17.1/eula.html)
+- [Privacy policy](https://sparxsystems.com/privacy.html)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| UML Modeling | Comprehensive support for all 14 UML 2.5 diagram types for software and systems design. |
-| ArchiMate Support | Native ArchiMate 3.2 modeling for enterprise architecture frameworks. |
-| BPMN Process Modeling | Business process modeling with BPMN 2.0 for workflow and process documentation. |
-| Code Generation | Generate source code in C++, Java, C#, Python, PHP, and other languages from UML models. |
-| Reverse Engineering | Import existing codebases to create UML models from source code automatically. |
-| Model Simulation | Execute and simulate state machines and activity diagrams for validation. |
-| Document Generation | Generate rich documentation from models in RTF, HTML, PDF, and DOCX formats. |
-| Team Collaboration | Multi-user repository access with role-based security and version control integration. |
+**Kin Score 41.1** — developing · rubric 0.24.0 · scored 2026-10-20
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 70.0 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 76.3 |
 
-| Name | Description |
-|------|-------------|
-| Enterprise Architecture Governance | Define and maintain enterprise architecture models aligned with TOGAF, Zachman, or ArchiMate frameworks. |
-| Software Design Documentation | Create detailed software designs with UML class, sequence, and component diagrams. |
-| Requirements Management | Capture, trace, and manage requirements from stakeholder needs through to implementation. |
-| Database Design | Model database schemas with ER diagrams and generate DDL scripts for multiple databases. |
-| Model-Driven Development | Use models as the primary artifact for generating code, tests, and documentation. |
+**Agent readiness 12.3** — agent-aware
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| Jira | Integrate with Atlassian Jira for requirements traceability and issue tracking. |
-| Azure DevOps | Connect to Azure DevOps for work item synchronization and version control. |
-| Git | Version control model packages with Git repositories. |
-| Eclipse | Integrate with Eclipse IDE for model-driven Java development. |
-| Visual Studio | Integrate with Microsoft Visual Studio for .NET development workflows. |
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
 
-## Maintainers
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sparx-enterprise-architect/](https://apis.io/providers/sparx-enterprise-architect/).
 
-**FN:** Kin Lane
+## How this profile is made
 
-**Email:** kin@apievangelist.com
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Sparx Enterprise Architect: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sparx-enterprise-architect/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
